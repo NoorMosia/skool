@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WRPV302 How-To Guide</title>
+  <meta name="description" content="Click-by-click how-to recipes for WRPV302 Advanced Programming, lectures 2 to 10: what to click and what code to add." />
+
+  <link rel="icon" href="../quiz/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button class="hamburger" id="menuToggle" aria-label="Open lesson menu" aria-expanded="false" aria-controls="sidebar">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="topbar-title">WRPV302 How-To</span>
+  </header>
+
+  <div class="app">
+    <div class="backdrop" id="backdrop" hidden></div>
+
+    <aside class="sidebar" id="sidebar">
+      <h1>WRPV302 How-To Guide</h1>
+      <p class="subtitle">Click-by-click recipes: what to click, what code to add.</p>
+      <a class="home-link" href="../index.html">&larr; Back to home</a>
+      <ul class="nav-list" id="navList"></ul>
+    </aside>
+
+    <main class="main" id="main"></main>
+  </div>
+
+  <!-- Engine first so registerLesson() exists before the banks run. -->
+  <script src="lesson-engine.js"></script>
+
+  <!-- Lesson banks: one file per lecture, L2 to L10 -->
+  <script src="lectures/lesson-02.js"></script>
+  <script src="lectures/lesson-03.js"></script>
+  <script src="lectures/lesson-04.js"></script>
+  <script src="lectures/lesson-05.js"></script>
+  <script src="lectures/lesson-06.js"></script>
+  <script src="lectures/lesson-07.js"></script>
+  <script src="lectures/lesson-08.js"></script>
+  <script src="lectures/lesson-09.js"></script>
+  <script src="lectures/lesson-10.js"></script>
+</body>
+</html>

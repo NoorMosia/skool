@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WRPV302 Practical Walkthrough</title>
+  <meta name="description" content="Click-by-click practical build for WRPV302: a multi-threaded TCP server and Android fragment client, mirroring the exam practical." />
+
+  <link rel="icon" href="../quiz/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button class="hamburger" id="menuToggle" aria-label="Open walkthrough menu" aria-expanded="false" aria-controls="sidebar">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="topbar-title">WRPV302 Practical</span>
+  </header>
+
+  <div class="app">
+    <div class="backdrop" id="backdrop" hidden></div>
+
+    <aside class="sidebar" id="sidebar">
+      <h1>WRPV302 Practical</h1>
+      <p class="subtitle">Build the Library Reservation system, step by step.</p>
+      <ul class="nav-list" id="navList"></ul>
+    </aside>
+
+    <main class="main" id="main"></main>
+  </div>
+
+  <!-- Engine first so registerWalkthrough() exists before the banks run. -->
+  <script src="walkthrough-engine.js"></script>
+
+  <!-- Walkthrough banks (nav sorts by id, so 0-recap shows first) -->
+  <script src="walkthroughs/0-recap.js"></script>
+  <script src="walkthroughs/1-server.js"></script>
+  <script src="walkthroughs/2-client.js"></script>
+</body>
+</html>

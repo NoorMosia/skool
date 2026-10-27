@@ -1,16 +1,17 @@
 :root {
-  --bg: #0f1419;
-  --panel: #1a222c;
-  --panel-2: #222d3a;
-  --border: #2d3a49;
-  --text: #e6edf3;
-  --muted: #8b98a5;
-  --accent: #4c8dff;
-  --accent-dim: #2b4a7a;
-  --correct: #2ea043;
-  --correct-bg: #11351d;
+  /* Kiro: near-black neutral dark, violet only as the accent */
+  --bg: #0a0a0b;
+  --panel: #141416;
+  --panel-2: #1d1d20;
+  --border: #2a2a2e;
+  --text: #ececee;
+  --muted: #9a9aa3;
+  --accent: #a371f7;
+  --accent-dim: #3a3350;
+  --correct: #3fb950;
+  --correct-bg: #16301f;
   --wrong: #f85149;
-  --wrong-bg: #3a1618;
+  --wrong-bg: #3a1620;
   --radius: 10px;
   --mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
   --topbar-h: 61px;
