@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WRPV302 Study Quiz</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button class="hamburger" id="menuToggle" aria-label="Open lecture menu" aria-expanded="false" aria-controls="sidebar">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="topbar-title">WRPV302 Quiz</span>
+  </header>
+
+  <div class="app">
+    <div class="backdrop" id="backdrop" hidden></div>
+
+    <aside class="sidebar" id="sidebar">
+      <h1>WRPV302 Quiz</h1>
+      <p class="subtitle">Pick a lecture. One section at a time.</p>
+      <ul class="nav-list" id="navList"></ul>
+    </aside>
+
+    <main class="main" id="main"></main>
+  </div>
+
+  <!-- Engine loads first so registerLecture() exists before the banks run.
+       It boots on DOMContentLoaded, so DOM readiness is not a concern. -->
+  <script src="quiz-engine.js"></script>
+
+  <!-- Question banks: one file per lecture -->
+  <script src="questions/lecture-01.js"></script>
+  <script src="questions/lecture-02.js"></script>
+  <script src="questions/lecture-03.js"></script>
+  <script src="questions/lecture-04.js"></script>
+  <script src="questions/lecture-05.js"></script>
+  <script src="questions/lecture-06.js"></script>
+  <script src="questions/lecture-07.js"></script>
+  <script src="questions/lecture-08.js"></script>
+  <script src="questions/lecture-09.js"></script>
+  <script src="questions/lecture-10.js"></script>
+  <script src="questions/lecture-11.js"></script>
+</body>
+</html>

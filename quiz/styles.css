@@ -1,0 +1,406 @@
+:root {
+  --bg: #0f1419;
+  --panel: #1a222c;
+  --panel-2: #222d3a;
+  --border: #2d3a49;
+  --text: #e6edf3;
+  --muted: #8b98a5;
+  --accent: #4c8dff;
+  --accent-dim: #2b4a7a;
+  --correct: #2ea043;
+  --correct-bg: #11351d;
+  --wrong: #f85149;
+  --wrong-bg: #3a1618;
+  --radius: 10px;
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+  --topbar-h: 61px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  padding: 20px 14px;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar h1 {
+  font-size: 18px;
+  margin: 0 0 4px;
+}
+
+.sidebar .subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-btn {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 9px 11px;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-btn:hover { background: var(--panel-2); }
+
+.nav-btn.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+}
+
+.nav-btn .count {
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--bg);
+  border-radius: 20px;
+  padding: 1px 8px;
+}
+
+/* ---- Main ---- */
+.main {
+  padding: 28px 36px 80px;
+  max-width: 900px;
+  min-width: 0;        /* allow the grid column to shrink below content width */
+  overflow-wrap: break-word;
+}
+
+.section-header {
+  margin-bottom: 22px;
+}
+
+.section-header h2 {
+  margin: 0 0 6px;
+  font-size: 24px;
+}
+
+.section-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 18px 0 26px;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 10px 0;
+  z-index: 5;
+  border-bottom: 1px solid var(--border);
+}
+
+.btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn:hover { filter: brightness(1.1); }
+.btn.secondary {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.score-pill {
+  margin-left: auto;
+  align-self: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+.score-pill strong { color: var(--text); }
+
+/* ---- Question card ---- */
+.q-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.q-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.q-num {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 34px;
+}
+
+.q-type {
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+  border-radius: 20px;
+  padding: 2px 8px;
+}
+
+.q-prompt {
+  font-size: 15px;
+  margin: 0 0 14px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.q-prompt code {
+  font-family: var(--mono);
+  background: var(--bg);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.q-hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+
+/* options */
+.options { display: flex; flex-direction: column; gap: 8px; }
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--panel-2);
+}
+.option:hover { border-color: var(--accent); }
+.option input { margin-top: 3px; }
+.option .opt-text { flex: 1; min-width: 0; font-size: 14px; overflow-wrap: break-word; word-break: break-word; }
+.option .opt-text code {
+  font-family: var(--mono);
+  background: var(--bg);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* fill-in-blank */
+.fill-input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-family: var(--mono);
+  width: 180px;
+  max-width: 100%;      /* never exceed the card on narrow screens */
+  margin: 2px 4px;
+}
+.fill-input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+
+/* ---- Answer reveal states ---- */
+.q-card.revealed .option.correct {
+  border-color: var(--correct);
+  background: var(--correct-bg);
+}
+.q-card.revealed .option.chosen-wrong {
+  border-color: var(--wrong);
+  background: var(--wrong-bg);
+}
+
+.answer-box {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 13px;
+  display: none;
+}
+.q-card.revealed .answer-box { display: block; }
+.answer-box .label {
+  font-weight: 700;
+  color: var(--correct);
+  margin-right: 6px;
+}
+.answer-box code {
+  font-family: var(--mono);
+  background: var(--panel-2);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+.answer-box .accepted { color: var(--muted); }
+.answer-box .expl {
+  margin-top: 8px;
+  color: var(--muted);
+  border-top: 1px dashed var(--border);
+  padding-top: 8px;
+}
+
+.verdict {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  margin-left: auto;
+}
+.verdict.ok { color: var(--correct); }
+.verdict.no { color: var(--wrong); }
+
+.fill-input.correct { border-color: var(--correct); background: var(--correct-bg); }
+.fill-input.wrong { border-color: var(--wrong); background: var(--wrong-bg); }
+
+.empty-state {
+  color: var(--muted);
+  font-size: 15px;
+  padding: 40px 0;
+}
+
+/* ---- Top bar + hamburger (hidden on desktop) ---- */
+.topbar {
+  display: none;
+  align-items: center;
+  gap: 14px;
+  height: var(--topbar-h);
+  padding: 0 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.topbar-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+/* animate into an X when the menu is open */
+body.nav-open .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+body.nav-open .hamburger span:nth-child(2) { opacity: 0; }
+body.nav-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 18;
+  border: none;
+}
+
+/* ---- Mobile layout ---- */
+@media (max-width: 720px) {
+  .topbar { display: flex; }
+
+  .app { grid-template-columns: 1fr; }
+
+  .main { padding: 20px 16px 60px; }
+
+  /* sidebar slides in from the left as an overlay, below the top bar */
+  .sidebar {
+    position: fixed;
+    top: var(--topbar-h);
+    left: 0;
+    height: calc(100vh - var(--topbar-h));
+    width: 82%;
+    max-width: 300px;
+    z-index: 20;
+    padding-top: 16px;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.4);
+  }
+  body.nav-open .sidebar { transform: translateX(0); }
+
+  /* backdrop also starts below the top bar so the hamburger stays tappable */
+  .backdrop { top: var(--topbar-h); }
+
+  /* the toolbar's sticky offset should sit below the top bar */
+  .toolbar { top: 0; }
+}
+
+/* On desktop the backdrop is never shown even if left in the DOM */
+@media (min-width: 721px) {
+  .backdrop { display: none !important; }
+}
